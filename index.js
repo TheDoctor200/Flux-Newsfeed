@@ -15,6 +15,16 @@ app.command("/fluxnewsfeed-ping", async ({ command, ack, respond }) => {
   await respond({ text: `Pong!\nLatency: ${latency}ms` });
 });
 
+app.command("/fluxnewsfeed-help", async ({ ack, respond }) => {
+  await ack();
+  await respond({
+    text:
+`Available Commands:
+/fluxnewsfeed-ping - Check bot latency
+/fluxnewsfeed-help - List available commands`
+  });
+});
+
 (async () => {
   await app.start();
   console.log("bot is running!");
