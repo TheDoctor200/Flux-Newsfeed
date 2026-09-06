@@ -25,7 +25,7 @@ app.command("/fluxnewsfeed-help", async ({ ack, respond }) => {
 /fluxnewsfeed-help - List available commands
 /fluxneewsfeed-fetch-ai - AI news feed
 /fluxnewsfeed-fetch-mc - Microcontroller news feeed
-/fluxnewsfeed-fetch-sciencex - Science and technology news feed
+/fluxnewsfeed-fetch-science - Science and technology news feed
 
 `
   });
