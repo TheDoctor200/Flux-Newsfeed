@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const axios = require("axios");
 const { App } = require("@slack/bolt");
 
 const app = new App({
@@ -21,7 +22,12 @@ app.command("/fluxnewsfeed-help", async ({ ack, respond }) => {
     text:
 `Available Commands:
 /fluxnewsfeed-ping - Check bot latency
-/fluxnewsfeed-help - List available commands`
+/fluxnewsfeed-help - List available commands
+/fluxneewsfeed-fetch-ai - AI news feed
+/fluxnewsfeed-fetch-mc - Microcontroller news feeed
+/fluxnewsfeed-fetch-sciencex - Science and technology news feed
+
+`
   });
 });
 
