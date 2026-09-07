@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-const axios = require("axios");
 const { App } = require("@slack/bolt");
 
 const app = new App({
@@ -9,29 +8,55 @@ const app = new App({
   socketMode: true
 });
 
-app.command("/fluxnewsfeed-ping", async ({ command, ack, respond }) => {
+// Load commands
+require("./fetch-ai")(app);
+require("./fetch-mc")(app);
+require("./fetch-science")(app);
+
+// Ping
+app.command("/fluxnewsfeed-ping", async ({ ack, respond }) => {
   const start = Date.now();
+
   await ack();
+
   const latency = Date.now() - start;
-  await respond({ text: `Pong!\nLatency: ${latency}ms` });
+
+  await respond({
+    text: `Pong!\nLatency: ${latency}ms`
+  });
 });
 
+// Help
 app.command("/fluxnewsfeed-help", async ({ ack, respond }) => {
   await ack();
+
   await respond({
     text:
-`Available Commands:
-/fluxnewsfeed-ping - Check bot latency
-/fluxnewsfeed-help - List available commands
-/fluxneewsfeed-fetch-ai - AI news feed
-/fluxnewsfeed-fetch-mc - Microcontroller news feeed
-/fluxnewsfeed-fetch-science - Science and technology news feed
+`*Flux News Feed Commands:*
 
-`
+/fluxnewsfeed-ping
+→ Check bot latency
+
+/fluxnewsfeed-help
+→ List available commands
+
+/fluxnewsfeed-fetch-ai
+→ AI news feed
+
+/fluxnewsfeed-fetch-mc
+→ Microcontroller news feed
+
+/fluxnewsfeed-fetch-science
+→ Science and technology news feed`
   });
 });
 
 (async () => {
-  await app.start();
-  console.log("bot is running!");
+  try {
+    await app.start();
+    console.log("⚡ Flux News Feed bot is running!");
+  } catch (error) {
+    console.error("Failed to start Flux News Feed bot:", error);
+    process.exit(1);
+  }
 })();
