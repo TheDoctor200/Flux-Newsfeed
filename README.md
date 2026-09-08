@@ -12,7 +12,9 @@ Flux-Newsfeed is a bot built for Slack, uses .js files with commands, fetching n
 
 Done! Try now in my public slack testing channel: https://hackclub.enterprise.slack.com/archives/C0C18L17YBA
 
-![](preview.gif)
+## Preview
+
+![Flux-Newsfeed preview](./preview.gif)
 
 ## Prerequirements
 
