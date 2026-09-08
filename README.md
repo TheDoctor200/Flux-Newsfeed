@@ -14,7 +14,7 @@ Done! Try now in my public slack testing channel: https://hackclub.enterprise.sl
 
 ![](https://github.com/TheDoctor200/Flux-Newsfeed/blob/master/preview.gif)
 
-##Prerequirements
+## Prerequirements
 
 - Node.js installed
 
