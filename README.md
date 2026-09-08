@@ -8,8 +8,9 @@ Flux-Newsfeed is a bot built for Slack, uses .js files with commands, fetching n
 
 ## Deployed at Slack (also available in HackClubs Server)
 
-tbd
+--tbd--
 
+Done! https://hackclub.enterprise.slack.com/archives/D0BUL8R4XEH
 ## Local Build
 
 ```bash
