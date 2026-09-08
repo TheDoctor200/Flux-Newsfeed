@@ -14,7 +14,7 @@ Done! Try now in my public slack testing channel: https://hackclub.enterprise.sl
 
 ## Preview
 
-![Flux-Newsfeed preview](./preview.gif)
+<img src="./preview.gif" alt="Flux-Newsfeed preview" width="700">
 
 ## Prerequirements
 
