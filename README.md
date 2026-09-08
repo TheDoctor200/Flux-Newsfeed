@@ -4,11 +4,9 @@
 
 ## Description
 
-Flux-Newsfeed is a bot built for Slack, uses .js files with commands, fetching news from the https://gnews.io api for research and experimental use. 
+Flux-Newsfeed is a news bot built for Slack, uses .js files with commands, fetching news from the https://gnews.io api for research and experimental use. It currently covers: science, microcontrollers, ai as topics with more being added soon.
 
 ## Deployed at Slack (also available in HackClubs Server)
-
---tbd--
 
 Done! Try now in my public slack testing channel: https://hackclub.enterprise.slack.com/archives/C0C18L17YBA
 
