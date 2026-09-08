@@ -13,12 +13,21 @@ Flux-Newsfeed is a bot built for Slack, uses .js files with commands, fetching n
 Done! Try now in my public slack testing channel: https://hackclub.enterprise.slack.com/archives/C0C18L17YBA
 
 ![](https://github.com/TheDoctor200/Flux-Newsfeed/blob/master/preview.gif)
+
+##Prerequirements
+
+- Node.js installed
+
 ```bash
 
 # 1. Clone the repository
 git clone https://github.com/TheDoctor200/Flux-Newsfeed.git
 
 # 2.
+npm init -y
+npm install @slack/bolt dotenv
+
+# 3.
 node index.js
 
 ```
