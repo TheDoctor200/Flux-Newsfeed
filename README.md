@@ -30,7 +30,24 @@ npm install @slack/bolt dotenv
 # 3.
 node index.js
 
+
 ```
+## Flux News Feed Commands:
+
+/fluxnewsfeed-ping
+→ Check bot latency
+
+/fluxnewsfeed-help
+→ List available commands
+
+/fluxnewsfeed-fetch-ai
+→ AI news feed
+
+/fluxnewsfeed-fetch-mc
+→ Microcontroller news feed
+
+/fluxnewsfeed-fetch-science
+→ Science and technology news feed
 
 ## Project Structure
 
