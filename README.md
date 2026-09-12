@@ -83,9 +83,9 @@ Each command is handled by a separate .js file in the commands folder (see Proje
 
 ```
 .
-├── commands/                # individual command modules (e.g., fetch-science.js)
+├── commands.js              # individual command modules (e.g., fetch-science.js)
 ├── node_modules/
-├── .env.example             # example env vars
+├── .env.example             # example env
 ├── index.js                 # app entry (Slack listeners & routing)
 ├── package.json
 ├── preview.gif
@@ -94,7 +94,7 @@ Each command is handled by a separate .js file in the commands folder (see Proje
 
 ## Development notes (how I made it)
 
-- Commands are modular JS files that export a handler function. index.js imports or dynamically loads these command files and registers handlers with @slack/bolt
+- Commands are modular JS files that export a handler function. index.js imports / dynamically loads these command files and registers handlers with @slack/bolt
 - GNews requests are simple HTTPS GETs with the API key included as a query parameter; responses are filtered to pick top headlines, then formatted as Slack blocks or simple text
 - Error handling: commands catch API errors and return user-friendly messages to Slack. For rate limit or network errors, the bot tells the user to try again later (GNews API about 100 Request per day)
 
