@@ -2,9 +2,9 @@
 
 ![GitHub stars](https://img.shields.io/github/stars/TheDoctor200/Flux-Newsfeed?style=for-the-badge&logo=github) ![GitHub forks](https://img.shields.io/github/forks/TheDoctor200/Flux-Newsfeed?style=for-the-badge&logo=github)
 
-Flux-Newsfeed is a small Slack bot that fetches curated news headlines from the GNews API and posts them in Slack channels on demand. It's intended for research and experimental use and currently offers feeds for science, microcontrollers, AI, and general tech.
+Flux-Newsfeed is a small Slack bot that fetches curated news headlines from the GNews API and posts them in Slack channels on demand. It's intended for research and experimental use and currently offers feeds for science, microcontrollers, AI, tech.
 
-Demo: (private Slack test workspace)
+Demo: (private Slack test workspace) https://hackclub.enterprise.slack.com/archives/C0C18L17YBA
 
 <img src="./preview.gif" alt="Flux-Newsfeed preview" width="700">
 
