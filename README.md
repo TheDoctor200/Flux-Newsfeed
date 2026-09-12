@@ -1,116 +1,72 @@
 # Flux-Newsfeed
 
-![GitHub stars](https://img.shields.io/github/stars/TheDoctor200/Flux-Newsfeed?style=for-the-badge&logo=github) ![GitHub forks](https://img.shields.io/github/forks/TheDoctor200/Flux-Newsfeed?style=for-the-badge&logo=github)
+![GitHub stars](https://img.shields.io/github/stars/TheDoctor200/Flux-Newsfeed?style=for-the-badge\&logo=github) ![GitHub forks](https://img.shields.io/github/forks/TheDoctor200/Flux-Newsfeed?style=for-the-badge\&logo=github)
 
-Flux-Newsfeed is a small Slack bot that fetches curated news headlines from the GNews API and posts them in Slack channels on demand. It's intended for research and experimental use and currently offers feeds for science, microcontrollers, AI, tech.
+A small Slack bot that grabs news from the [GNews API](https://gnews.io) and posts it to Slack.
 
-Demo: (private Slack test workspace) https://hackclub.enterprise.slack.com/archives/C0C18L17YBA
+It's mainly a little research/experimental project. Right now it has feeds for **science, microcontrollers, AI, and tech**.
 
-<img src="./preview.gif" alt="Flux-Newsfeed preview" width="700">
+## What it does
 
-## Features
+* `/fluxnewsfeed help` — show available commands
+* `/fluxnewsfeed fetch science` — get science news
+* `/fluxnewsfeed fetch mc` — get microcontroller news
+* `/fluxnewsfeed ping` — check if the bot is alive
 
-- Slash-command driven: fetch topic-specific news with a Slack slash command.
-- Multiple topics supported out of the box: science, microcontrollers, AI, tech.
-- Lightweight, modular command files (.js) so adding a new feed is easy.
-- Configurable via environment variables (API keys, default topic, post formatting).
-- Designed for local development and simple deployment (Heroku/other Node hosts).
+Adding another topic is pretty easy — feeds are kept in separate JS files.
 
-## Prerquirements
+## Setup
 
-- Node.js
-- @slack/bolt (Slack app framework)
-- dotenv for configuration
-- gnews.io for news data (HTTP API)
+You'll need:
 
-## How it works (architecture)
+* Node.js 16+
+* A Slack app with a slash command
+* A [GNews API key](https://gnews.io)
 
-1. Slack sends a POST to the app's slash-command endpoint when a user invokes a command.  
-2. The app (index.js) routes the request to the matching command module (each command exported from a .js file).  
-3. The command module calls the GNews API, formats results, and responds to Slack (either an immediate response or an ephemeral/post message).  
-4. All configuration (Slack tokens, GNews API key, optional default topic) comes from environment variables in .env.
+Clone the repo and install the dependencies:
 
-## Prerequisites
-
-- Node.js 16+ (or current LTS)
-- A Slack app with a Slash Command configured and Bot tokens generated
-- A GNews API key (https://gnews.io)
-
-## Environment variables
-
-Create a .env file in the project root with:
-
+```bash
+git clone https://github.com/TheDoctor200/Flux-Newsfeed.git
+cd Flux-Newsfeed
+npm install
 ```
+
+Then create a `.env` file:
+
+```env
 SLACK_BOT_TOKEN=xoxb-...
-SLACK_SIGNING_SECRET=abcdef...
-GNEWS_API_KEY=your_gnews_api_key_here
+SLACK_SIGNING_SECRET=...
+GNEWS_API_KEY=...
 PORT=3000
 DEFAULT_TOPIC=science
 ```
 
-## Installation & run (local)
+Start it with:
 
 ```bash
-# 1. Clone the repo
-git clone https://github.com/TheDoctor200/Flux-Newsfeed.git
-cd Flux-Newsfeed
-
-# 2. Install dependencies
-npm install
-
-# 3. Create .env (see Environment variables above)
-
-# 4. Start the app
 node index.js
 ```
 
-## Usage (slash commands)
-
-Current Commands:
-
-- /fluxnewsfeed help  
-  - Shows a short help message with available topics.
-- /fluxnewsfeed fetch science  
-  - Fetches the latest science headlines.
-- /fluxnewsfeed fetch mc  
-  - Fetches microcontroller-related headlines.
-- /fluxnewsfeed ping  
-  - Quick latency/health check for the bot.
-
-Each command is handled by a separate .js file in the commands folder (see Project structure). The command module is responsible for calling GNews, parsing results, and building the Slack response.
+For local Slack testing, I used **ngrok** to expose the local server.
 
 ## Project structure
 
-```
+```text
 .
-├── commands.js              # individual command modules (e.g., fetch-science.js)
-├── node_modules/
-├── .env.example             # example env
-├── index.js                 # app entry (Slack listeners & routing)
+├── commands/
+├── index.js
+├── .env.example
 ├── package.json
-├── preview.gif
-└── README.md
+└── preview.gif
 ```
 
-## Development notes (how I made it)
+`index.js` handles Slack and routes commands, while the files in `commands/` handle the individual feeds.
 
-- Commands are modular JS files that export a handler function. index.js imports / dynamically loads these command files and registers handlers with @slack/bolt
-- GNews requests are simple HTTPS GETs with the API key included as a query parameter; responses are filtered to pick top headlines, then formatted as Slack blocks or simple text
-- Error handling: commands catch API errors and return user-friendly messages to Slack. For rate limit or network errors, the bot tells the user to try again later (GNews API about 100 Request per day)
+## Notes
 
-## Configuration & extending
+GNews has a daily request limit, so don't spam the commands.
 
-To add a new feed/topic:
+This project is mostly for experimenting with Slack bots and news APIs. Contributions are welcome!
 
-1. Create a new command file in commands/ (copy an existing fetch-* file).
-2. Update index.js to register the new slash subcommand or detection.
-3. Test locally using ngrok (a tunnel service, so you don't have to port forward) and add the command to your Slack app configuration if necessary
-
-## Contributing
-
-Pull requests welcome — please open an issue first if you're planning a larger change. Keep changes small and focused; run the app locally to verify behavior.
-
-## License & authors
-
-Just me :)
+**Made by me :)**
 
